@@ -1,6 +1,6 @@
 /* =========================================================
-   NAVEED RAZA - POWER BI PORTFOLIO
-   DARK PROFESSIONAL THEME
+   NAVEED RAZA - PORTFOLIO
+   MODERN DARK PROFESSIONAL THEME
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -22,9 +22,35 @@ html {
 
 body {
     font-family: "Inter", sans-serif;
-    background: #0b1018;
+    background: #080d14;
     color: #e7edf5;
-    line-height: 1.6;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(32, 199, 217, 0.04),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(245, 166, 35, 0.03),
+            transparent 30%
+        );
+}
+
+::selection {
+    background: #20c7d9;
+    color: #071017;
 }
 
 a {
@@ -36,21 +62,54 @@ button {
     font-family: inherit;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 .container {
     width: min(1180px, 90%);
     margin: auto;
 }
 
 .section {
-    padding: 110px 0;
+    padding: 115px 0;
+    position: relative;
 }
 
 .section-dark {
-    background: #0b1018;
+    background: #080d14;
 }
 
 .section-alt {
-    background: #101722;
+    background:
+        linear-gradient(
+            180deg,
+            #0d141e 0%,
+            #101722 100%
+        );
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #070b11;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #223140;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #20c7d9;
 }
 
 
@@ -68,11 +127,14 @@ button {
 
     z-index: 1000;
 
-    background: rgba(9, 14, 22, 0.94);
+    background: rgba(7, 12, 18, 0.82);
 
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid #1e2937;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
 }
 
 .nav-container {
@@ -85,48 +147,83 @@ button {
 
 .logo {
     font-size: 21px;
-
     font-weight: 800;
 
     color: #ffffff;
 
-    letter-spacing: -0.5px;
+    letter-spacing: -0.7px;
 }
 
 .logo span {
-    color: #20c7d9;
+    background: linear-gradient(
+        90deg,
+        #20c7d9,
+        #52d9e7
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
 }
 
 .navbar {
     display: flex;
-
     align-items: center;
-
     gap: 30px;
 }
 
 .nav-link {
-    font-size: 10px;
+    position: relative;
 
+    font-size: 10px;
     font-weight: 700;
 
     color: #8d9aaa;
 
-    letter-spacing: 0.8px;
+    letter-spacing: 0.9px;
 
-    transition: 0.3s;
+    text-transform: uppercase;
+
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #20c7d9,
+        #52d9e7
+    );
+
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #20c7d9;
+    color: #ffffff;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
 }
 
 .menu-btn {
     display: none;
 
     border: none;
-
     background: transparent;
 
     color: #ffffff;
@@ -134,6 +231,12 @@ button {
     font-size: 22px;
 
     cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+.menu-btn:hover {
+    color: #20c7d9;
 }
 
 
@@ -145,27 +248,30 @@ button {
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
 
     position: relative;
-
     overflow: hidden;
 
     padding-top: 90px;
 
     background:
         radial-gradient(
-            circle at 85% 20%,
-            rgba(32, 199, 217, 0.10),
-            transparent 28%
+            circle at 82% 18%,
+            rgba(32, 199, 217, 0.16),
+            transparent 29%
         ),
         radial-gradient(
-            circle at 10% 80%,
-            rgba(245, 166, 35, 0.06),
-            transparent 25%
+            circle at 10% 88%,
+            rgba(245, 166, 35, 0.08),
+            transparent 27%
         ),
-        #0b1018;
+        linear-gradient(
+            135deg,
+            #070c12 0%,
+            #0b111a 45%,
+            #0d1621 100%
+        );
 }
 
 .hero::before {
@@ -173,15 +279,18 @@ button {
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
 
-    right: -250px;
-    top: 80px;
+    right: -310px;
+    top: 70px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(32, 199, 217, 0.12);
+    border: 1px solid rgba(32, 199, 217, 0.1);
+
+    box-shadow:
+        0 0 120px rgba(32, 199, 217, 0.04);
 }
 
 .hero::after {
@@ -189,11 +298,11 @@ button {
 
     position: absolute;
 
-    width: 320px;
-    height: 320px;
+    width: 380px;
+    height: 380px;
 
-    right: -160px;
-    top: 170px;
+    right: -190px;
+    top: 180px;
 
     border-radius: 50%;
 
@@ -202,12 +311,11 @@ button {
 
 .hero-container {
     position: relative;
-
     z-index: 2;
 }
 
 .hero-content {
-    max-width: 900px;
+    max-width: 920px;
 }
 
 .availability {
@@ -217,21 +325,25 @@ button {
 
     gap: 9px;
 
-    padding: 8px 15px;
+    padding: 9px 16px;
 
-    border: 1px solid #24515a;
+    border: 1px solid rgba(32, 199, 217, 0.3);
 
     border-radius: 30px;
 
     color: #20c7d9;
 
-    background: #0d1b22;
+    background: rgba(13, 27, 34, 0.72);
+
+    backdrop-filter: blur(10px);
 
     font-size: 10px;
-
     font-weight: 700;
 
     margin-bottom: 25px;
+
+    box-shadow:
+        inset 0 0 20px rgba(32, 199, 217, 0.03);
 }
 
 .status-dot {
@@ -242,7 +354,9 @@ button {
 
     border-radius: 50%;
 
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+    box-shadow:
+        0 0 0 4px rgba(34, 197, 94, 0.08),
+        0 0 12px rgba(34, 197, 94, 0.8);
 }
 
 .hero-small-title {
@@ -252,31 +366,46 @@ button {
 
     font-weight: 800;
 
-    letter-spacing: 2.5px;
+    letter-spacing: 2.7px;
 
     margin-bottom: 13px;
+
+    text-transform: uppercase;
 }
 
 .hero h1 {
-    font-size: clamp(46px, 6vw, 78px);
+    font-size: clamp(48px, 6vw, 80px);
 
     line-height: 1.02;
 
-    letter-spacing: -3.5px;
+    letter-spacing: -4px;
 
     font-weight: 800;
 
     color: #f4f7fb;
+
+    text-shadow:
+        0 10px 45px rgba(0, 0, 0, 0.25);
 }
 
 .hero h1 span {
-    color: #20c7d9;
+    background: linear-gradient(
+        90deg,
+        #20c7d9 0%,
+        #59e0ed 50%,
+        #f5a623 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
 }
 
 .hero h2 {
     font-size: 23px;
 
-    margin-top: 17px;
+    margin-top: 18px;
 
     color: #aeb9c8;
 
@@ -284,56 +413,107 @@ button {
 }
 
 .hero-description {
-    max-width: 850px;
+    max-width: 830px;
 
-    margin-top: 22px;
+    margin-top: 23px;
 
     color: #8190a3;
 
     font-size: 14px;
 
-    line-height: 1.9;
+    line-height: 1.95;
 }
 
 .hero-buttons {
     display: flex;
 
-    gap: 13px;
+    flex-wrap: wrap;
 
-    margin-top: 32px;
+    gap: 14px;
+
+    margin-top: 34px;
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .btn {
+    position: relative;
+
     display: inline-flex;
 
     justify-content: center;
     align-items: center;
 
-    padding: 13px 25px;
+    gap: 8px;
 
-    border-radius: 6px;
+    padding: 13px 26px;
+
+    border-radius: 8px;
 
     font-size: 11px;
 
     font-weight: 800;
 
-    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .btn-primary {
-    background: #20c7d9;
+    background: linear-gradient(
+        135deg,
+        #20c7d9,
+        #42d8e7
+    );
 
     color: #071017;
 
-    box-shadow: 0 8px 25px rgba(32, 199, 217, 0.15);
+    box-shadow:
+        0 10px 30px rgba(32, 199, 217, 0.2);
+}
+
+.btn-primary::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -130%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: 0.6s ease;
+}
+
+.btn-primary:hover::before {
+    left: 140%;
 }
 
 .btn-primary:hover {
-    background: #52d9e7;
+    transform: translateY(-3px);
 
-    transform: translateY(-2px);
-
-    box-shadow: 0 12px 30px rgba(32, 199, 217, 0.25);
+    box-shadow:
+        0 15px 40px rgba(32, 199, 217, 0.35);
 }
 
 .btn-outline {
@@ -341,7 +521,9 @@ button {
 
     color: #d7e0ea;
 
-    background: transparent;
+    background: rgba(255, 255, 255, 0.015);
+
+    backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
@@ -349,7 +531,10 @@ button {
 
     color: #20c7d9;
 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -380,17 +565,24 @@ button {
     top: 5px;
 
     width: 1px;
-    height: 45px;
+    height: 48px;
 
-    background: #273342;
+    background:
+        linear-gradient(
+            transparent,
+            #314152,
+            transparent
+        );
 }
 
 .stat h3 {
-    font-size: 31px;
+    font-size: 32px;
 
     line-height: 1;
 
     color: #f4f7fb;
+
+    font-weight: 800;
 }
 
 .stat p {
@@ -400,9 +592,11 @@ button {
 
     color: #697789;
 
-    letter-spacing: 1px;
+    letter-spacing: 1.1px;
 
     font-weight: 700;
+
+    text-transform: uppercase;
 }
 
 
@@ -411,7 +605,7 @@ button {
 ========================================================= */
 
 .section-heading {
-    margin-bottom: 55px;
+    margin-bottom: 58px;
 }
 
 .section-heading span {
@@ -421,15 +615,17 @@ button {
 
     font-weight: 800;
 
-    letter-spacing: 2.5px;
+    letter-spacing: 2.7px;
+
+    text-transform: uppercase;
 }
 
 .section-heading h2 {
-    font-size: 38px;
+    font-size: 40px;
 
-    margin-top: 6px;
+    margin-top: 7px;
 
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 
     color: #f1f5f9;
 }
@@ -439,12 +635,19 @@ button {
 
     display: block;
 
-    width: 45px;
+    width: 48px;
     height: 3px;
 
-    margin-top: 14px;
+    margin-top: 15px;
 
-    background: #f5a623;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f5a623,
+            #ffbe55
+        );
 }
 
 
@@ -455,7 +658,7 @@ button {
 .about-grid {
     display: grid;
 
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 330px 1fr;
 
     gap: 85px;
 
@@ -463,18 +666,18 @@ button {
 }
 
 .profile-card {
-    height: 400px;
+    height: 410px;
 
-    border-radius: 14px;
+    border-radius: 18px;
 
     background:
         linear-gradient(
             145deg,
             #121c29,
-            #0d141e
+            #0c131c
         );
 
-    border: 1px solid #243243;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     display: flex;
 
@@ -483,7 +686,8 @@ button {
 
     overflow: hidden;
 
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35);
 
     position: relative;
 }
@@ -493,17 +697,38 @@ button {
 
     position: absolute;
 
-    width: 190px;
-    height: 190px;
+    width: 230px;
+    height: 230px;
 
     border-radius: 50%;
 
     border: 1px solid rgba(32, 199, 217, 0.18);
+
+    box-shadow:
+        0 0 60px rgba(32, 199, 217, 0.05);
+}
+
+.profile-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    right: -50px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background: rgba(245, 166, 35, 0.05);
+
+    filter: blur(5px);
 }
 
 .profile-placeholder {
-    width: 170px;
-    height: 170px;
+    width: 175px;
+    height: 175px;
 
     border-radius: 50%;
 
@@ -512,7 +737,12 @@ button {
     align-items: center;
     justify-content: center;
 
-    background: #162536;
+    background:
+        linear-gradient(
+            145deg,
+            #172a3a,
+            #12202e
+        );
 
     color: #20c7d9;
 
@@ -526,7 +756,9 @@ button {
 
     border: 1px solid #2d455b;
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.38),
+        0 0 35px rgba(32, 199, 217, 0.06);
 }
 
 .profile-card img {
@@ -535,19 +767,27 @@ button {
 
     object-fit: cover;
 
-    border-radius: 14px;
+    border-radius: 18px;
 
     position: relative;
 
     z-index: 3;
+
+    transition: transform 0.5s ease;
+}
+
+.profile-card:hover img {
+    transform: scale(1.04);
 }
 
 .about-content h3 {
-    font-size: 27px;
+    font-size: 28px;
 
     margin-bottom: 20px;
 
     color: #f1f5f9;
+
+    letter-spacing: -0.5px;
 }
 
 .about-content p {
@@ -556,6 +796,8 @@ button {
     margin-bottom: 16px;
 
     font-size: 13px;
+
+    line-height: 1.9;
 }
 
 .about-details {
@@ -563,7 +805,7 @@ button {
 
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 20px;
+    gap: 16px;
 
     margin-top: 30px;
 }
@@ -573,17 +815,33 @@ button {
 
     flex-direction: column;
 
-    gap: 4px;
+    gap: 5px;
+
+    padding: 15px 16px;
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition: 0.3s ease;
+}
+
+.about-details div:hover {
+    border-color: rgba(32, 199, 217, 0.2);
+
+    background: rgba(32, 199, 217, 0.025);
 }
 
 .about-details strong {
-    font-size: 10px;
+    font-size: 9px;
 
     color: #d2dbe5;
 
     text-transform: uppercase;
 
-    letter-spacing: 0.7px;
+    letter-spacing: 0.8px;
 }
 
 .about-details span {
@@ -598,11 +856,16 @@ button {
 ========================================================= */
 
 .experience-section {
-    background: #101722;
+    background:
+        linear-gradient(
+            180deg,
+            #0d141e,
+            #101722
+        );
 }
 
 .experience-wrapper {
-    max-width: 900px;
+    max-width: 930px;
 }
 
 .timeline-title {
@@ -622,7 +885,7 @@ button {
 .timeline-item {
     border-left: 1px solid #2a394b;
 
-    padding: 0 0 42px 30px;
+    padding: 0 0 42px 32px;
 
     position: relative;
 }
@@ -636,8 +899,8 @@ button {
 
     position: absolute;
 
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
 
     background: #20c7d9;
 
@@ -646,7 +909,32 @@ button {
     left: -5px;
     top: 5px;
 
-    box-shadow: 0 0 0 5px rgba(32, 199, 217, 0.08);
+    box-shadow:
+        0 0 0 6px rgba(32, 199, 217, 0.08),
+        0 0 15px rgba(32, 199, 217, 0.35);
+}
+
+.timeline-item::after {
+    content: "";
+
+    position: absolute;
+
+    left: 31px;
+    bottom: 22px;
+
+    width: calc(100% - 31px);
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.05),
+            transparent
+        );
+}
+
+.timeline-item:last-child::after {
+    display: none;
 }
 
 .timeline-date {
@@ -662,17 +950,17 @@ button {
 .timeline-item h4 {
     margin-top: 8px;
 
-    font-size: 18px;
+    font-size: 19px;
 
     color: #ffffff;
 }
 
 .timeline-item .company {
-    color: #8c9aac;
+    color: #91a0b2;
 
     font-size: 12px;
 
-    margin: 4px 0 11px;
+    margin: 4px 0 12px;
 }
 
 .timeline-item p {
@@ -680,9 +968,9 @@ button {
 
     font-size: 12px;
 
-    max-width: 760px;
+    max-width: 780px;
 
-    line-height: 1.8;
+    line-height: 1.85;
 }
 
 
@@ -695,49 +983,95 @@ button {
 
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 20px;
+    gap: 22px;
 }
 
 .skill-card {
-    background: #101822;
+    position: relative;
 
-    border: 1px solid #202e3d;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 28, 40, 0.96),
+            rgba(12, 18, 27, 0.96)
+        );
 
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
 
-    padding: 30px;
+    border-radius: 16px;
 
-    transition: all 0.3s ease;
+    padding: 31px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.skill-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    top: -70px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(32, 199, 217, 0.08);
+
+    transition: transform 0.4s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
 
-    border-color: #285966;
+    border-color: rgba(32, 199, 217, 0.38);
 
-    background: #121d29;
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.32);
+}
 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+.skill-card:hover::before {
+    transform: scale(1.45);
 }
 
 .skill-icon {
-    width: 45px;
-    height: 45px;
+    width: 47px;
+    height: 47px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 8px;
+    border-radius: 10px;
 
-    background: #10282e;
+    background:
+        linear-gradient(
+            145deg,
+            #102b32,
+            #0e2228
+        );
+
+    border: 1px solid rgba(32, 199, 217, 0.13);
 
     color: #20c7d9;
 
     margin-bottom: 20px;
 
-    font-size: 17px;
+    font-size: 18px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 .skill-card h3 {
@@ -758,11 +1092,11 @@ button {
 
 .skill-tags span,
 .project-tech span {
-    background: #151f2b;
+    background: rgba(255, 255, 255, 0.025);
 
     border: 1px solid #263546;
 
-    border-radius: 4px;
+    border-radius: 6px;
 
     padding: 6px 10px;
 
@@ -771,6 +1105,19 @@ button {
     color: #98a7b9;
 
     font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+.skill-tags span:hover,
+.project-tech span:hover {
+    color: #20c7d9;
+
+    border-color: rgba(32, 199, 217, 0.4);
+
+    background: rgba(32, 199, 217, 0.04);
+
+    transform: translateY(-1px);
 }
 
 
@@ -778,62 +1125,140 @@ button {
    PROJECTS
 ========================================================= */
 
+
+/* Make the Projects section wider for interactive dashboards */
+#projects .container {
+    width: min(1180px, 90%);
+    margin: auto;
+}
+
+.project-card,
+.powerbi-project-card {
+    width: 100%;
+    max-width: 100%;
+}
+
+
 .projects-section {
-    background: #0b1018;
+    background: #080d14;
 }
 
 .projects-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    /* One project/dashboard per row */
+    grid-template-columns: 1fr;
 
-    gap: 22px;
+    gap: 42px;
 }
 
 .project-card {
-    background: #101822;
+    position: relative;
 
-    border: 1px solid #202e3d;
+    width: 100%;
 
-    border-radius: 11px;
+    background:
+        linear-gradient(
+            145deg,
+            #111a25,
+            #0c131c
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 16px;
 
     overflow: hidden;
 
-    transition: all 0.3s ease;
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 
-    border-color: #285966;
+    border-color: rgba(32, 199, 217, 0.4);
 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.38),
+        0 0 28px rgba(32, 199, 217, 0.04);
 }
 
 .project-image {
-    height: 180px;
+    height: 190px;
 
     display: flex;
 
     justify-content: center;
     align-items: center;
 
-    font-size: 46px;
+    font-size: 48px;
 
     color: #20c7d9;
 
+    position: relative;
+
+    overflow: hidden;
+
     background:
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(32, 199, 217, 0.12),
+            transparent 32%
+        ),
         linear-gradient(
             135deg,
-            #14212d,
-            #0e171f
+            #152431,
+            #0c151e
         );
 
-    border-bottom: 1px solid #202e3d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.035),
+            transparent 65%
+        );
+
+    transform: translateX(-100%);
+
+    transition: 0.7s ease;
+}
+
+.project-card:hover .project-image::after {
+    transform: translateX(100%);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.06);
 }
 
 .project-content {
-    padding: 24px;
+    padding: 25px;
 }
 
 .project-category {
@@ -843,7 +1268,9 @@ button {
 
     font-weight: 800;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 1.6px;
+
+    text-transform: uppercase;
 }
 
 .project-content h3 {
@@ -859,7 +1286,7 @@ button {
 
     font-size: 11px;
 
-    line-height: 1.75;
+    line-height: 1.8;
 }
 
 .project-tech {
@@ -886,10 +1313,16 @@ button {
     font-weight: 800;
 
     margin-top: 20px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .project-link:hover {
     color: #f5a623;
+
+    transform: translateX(3px);
 }
 
 
@@ -898,7 +1331,12 @@ button {
 ========================================================= */
 
 .certifications-section {
-    background: #101722;
+    background:
+        linear-gradient(
+            180deg,
+            #101722,
+            #0c141d
+        );
 }
 
 .certifications-grid {
@@ -910,25 +1348,59 @@ button {
 }
 
 .cert-card {
-    padding: 28px;
+    position: relative;
 
-    background: #101822;
+    padding: 29px;
 
-    border: 1px solid #202e3d;
+    background:
+        linear-gradient(
+            145deg,
+            #111b27,
+            #0d151f
+        );
 
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
 
-    transition: all 0.3s ease;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.cert-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 95px;
+    height: 95px;
+
+    right: -45px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    background: rgba(245, 166, 35, 0.06);
 }
 
 .cert-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 
-    border-color: #285966;
+    border-color: rgba(245, 166, 35, 0.35);
+
+    box-shadow:
+        0 20px 42px rgba(0, 0, 0, 0.3);
 }
 
 .cert-icon {
-    font-size: 25px;
+    font-size: 26px;
 
     color: #f5a623;
 
@@ -965,7 +1437,13 @@ button {
 ========================================================= */
 
 .contact-section {
-    background: #0b1018;
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(32, 199, 217, 0.05),
+            transparent 30%
+        ),
+        #080d14;
 }
 
 .contact-container {
@@ -973,15 +1451,17 @@ button {
 
     grid-template-columns: 1.2fr 0.8fr;
 
-    gap: 70px;
+    gap: 72px;
 
     align-items: center;
 }
 
 .contact-content h3 {
-    font-size: 30px;
+    font-size: 31px;
 
     color: #f1f5f9;
+
+    letter-spacing: -0.8px;
 }
 
 .contact-content > p {
@@ -990,6 +1470,8 @@ button {
     max-width: 520px;
 
     margin: 15px 0 30px;
+
+    line-height: 1.9;
 }
 
 .contact-item {
@@ -1000,22 +1482,36 @@ button {
     align-items: center;
 
     margin-top: 20px;
+
+    padding: 10px 0;
 }
 
 .contact-icon {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
+
+    flex-shrink: 0;
 
     display: flex;
 
     justify-content: center;
     align-items: center;
 
-    background: #10282e;
+    background:
+        linear-gradient(
+            145deg,
+            #102b31,
+            #0e2228
+        );
+
+    border: 1px solid rgba(32, 199, 217, 0.14);
 
     color: #20c7d9;
 
-    border-radius: 7px;
+    border-radius: 9px;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .contact-item span {
@@ -1028,6 +1524,8 @@ button {
     text-transform: uppercase;
 
     font-weight: 700;
+
+    letter-spacing: 0.8px;
 }
 
 .contact-item a {
@@ -1036,29 +1534,56 @@ button {
     color: #cbd5e1;
 
     font-weight: 600;
+
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #20c7d9;
 }
 
 .contact-box {
-    padding: 45px;
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 46px;
 
     text-align: center;
 
     background:
         linear-gradient(
             145deg,
-            #152332,
-            #0f1822
+            rgba(21, 35, 50, 0.98),
+            rgba(12, 20, 29, 0.98)
         );
 
-    border: 1px solid #26384b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-radius: 13px;
+    border-radius: 17px;
 
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.32);
+}
+
+.contact-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -90px;
+    top: -90px;
+
+    background: rgba(32, 199, 217, 0.07);
 }
 
 .contact-box > i {
-    font-size: 40px;
+    font-size: 41px;
 
     color: #20c7d9;
 
@@ -1087,11 +1612,11 @@ button {
 ========================================================= */
 
 .footer {
-    padding: 25px 0;
+    padding: 26px 0;
 
-    background: #070c12;
+    background: #05090e;
 
-    border-top: 1px solid #1b2735;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .footer .container {
@@ -1115,8 +1640,8 @@ button {
 }
 
 .social-links a {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
 
     display: flex;
 
@@ -1125,11 +1650,17 @@ button {
 
     border: 1px solid #293849;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     color: #20c7d9;
 
-    transition: 0.3s;
+    background: rgba(255, 255, 255, 0.015);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .social-links a:hover {
@@ -1138,11 +1669,34 @@ button {
     border-color: #20c7d9;
 
     color: #071017;
+
+    transform: translateY(-3px);
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   SIMPLE REVEAL ANIMATION
+========================================================= */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    animation: fadeUp 0.8s ease both;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1157,7 +1711,9 @@ button {
 
         padding: 25px;
 
-        background: #0d141e;
+        background: rgba(9, 15, 23, 0.97);
+
+        backdrop-filter: blur(18px);
 
         display: none;
 
@@ -1165,13 +1721,20 @@ button {
 
         align-items: flex-start;
 
-        gap: 20px;
+        gap: 22px;
 
         border-bottom: 1px solid #243243;
+
+        box-shadow:
+            0 20px 35px rgba(0, 0, 0, 0.28);
     }
 
     .navbar.show {
         display: flex;
+    }
+
+    .nav-link::after {
+        bottom: -4px;
     }
 
     .menu-btn {
@@ -1179,7 +1742,7 @@ button {
     }
 
     .stats {
-        grid-template-columns: repeat(2, 120px);
+        grid-template-columns: repeat(2, 130px);
 
         gap: 35px;
     }
@@ -1191,15 +1754,15 @@ button {
     .about-grid {
         grid-template-columns: 1fr;
 
-        gap: 40px;
+        gap: 45px;
     }
 
-    .about-image {
-        max-width: 320px;
+    .profile-card {
+        max-width: 360px;
     }
 
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .certifications-grid {
@@ -1212,32 +1775,77 @@ button {
 }
 
 
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
 @media (max-width: 600px) {
 
+    .container {
+        width: min(92%, 1180px);
+    }
+
     .section {
-        padding: 80px 0;
+        padding: 82px 0;
+    }
+
+    .header {
+        height: 70px;
+    }
+
+    .navbar {
+        top: 70px;
+    }
+
+    .hero {
+        min-height: 100svh;
+
+        padding-top: 105px;
+        padding-bottom: 60px;
     }
 
     .hero h1 {
-        font-size: 44px;
+        font-size: 45px;
 
-        letter-spacing: -2px;
+        line-height: 1.05;
+
+        letter-spacing: -2.5px;
     }
 
     .hero h2 {
-        font-size: 19px;
+        font-size: 18px;
+
+        line-height: 1.5;
+    }
+
+    .hero-description {
+        font-size: 13px;
     }
 
     .hero-buttons {
         flex-direction: column;
 
-        align-items: flex-start;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
     }
 
     .stats {
         grid-template-columns: repeat(2, 1fr);
 
         gap: 30px;
+
+        margin-top: 55px;
+    }
+
+    .section-heading {
+        margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
     }
 
     .skills-grid,
@@ -1246,13 +1854,221 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .about-grid {
+        gap: 35px;
+    }
+
+    .profile-card {
+        width: 100%;
+        height: 380px;
+    }
+
     .about-details {
         grid-template-columns: 1fr;
+    }
+
+    .skill-card,
+    .project-content,
+    .cert-card {
+        padding: 24px;
+    }
+
+    .contact-box {
+        padding: 35px 25px;
     }
 
     .footer .container {
         flex-direction: column;
 
-        gap: 15px;
+        gap: 16px;
+
+        text-align: center;
     }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero h2 {
+        font-size: 16px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 22px;
+    }
+}
+
+/* =========================================================
+   LARGE INTERACTIVE POWER BI DASHBOARD
+========================================================= */
+
+.powerbi-project-card {
+    width: 100%;
+    margin: 0;
+
+    background: #15171b;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Dashboard Header */
+
+.powerbi-project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 30px;
+
+    background: #15171b;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+.powerbi-title {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.powerbi-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #7b82ff;
+
+    background: rgba(123, 130, 255, 0.10);
+
+    font-size: 15px;
+}
+
+
+.powerbi-title h3 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   LARGE POWER BI EMBED
+========================================================= */
+
+.powerbi-embed-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    /* Balanced dashboard height to align with the site layout */
+    height: 650px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    background: #0b1017;
+}
+
+
+.powerbi-embed-wrapper iframe {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+.powerbi-project-footer {
+    padding: 25px 30px 30px;
+}
+
+
+.powerbi-project-footer p {
+    max-width: 1000px;
+
+    color: #8795a8;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .powerbi-embed-wrapper {
+        width: 100%;
+
+        height: 560px;
+
+        margin: 0;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .powerbi-project-header {
+        padding: 18px;
+    }
+
+    .powerbi-title h3 {
+        font-size: 17px;
+    }
+
+    .powerbi-embed-wrapper {
+        width: 100%;
+
+        height: 430px;
+
+        margin: 0;
+    }
+
+    .powerbi-project-footer {
+        padding: 20px;
+    }
+
 }
